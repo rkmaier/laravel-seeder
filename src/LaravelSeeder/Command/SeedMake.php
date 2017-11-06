@@ -35,7 +35,7 @@ class SeedMake extends MigrateMakeCommand
     /**
      * Execute the console command.
      */
-    public function fire(): void
+    public function handle(): void
     {
         // Get the name of the seeder
         $name = trim($this->argument('name'));
@@ -51,9 +51,9 @@ class SeedMake extends MigrateMakeCommand
     /**
      * Write the migration file to disk.
      *
-     * @param  string $model
-     * @param  string $table
-     * @param  bool $created
+     * @param string $model
+     * @param string $table
+     * @param bool   $created
      *
      * @return string
      */
@@ -65,7 +65,7 @@ class SeedMake extends MigrateMakeCommand
 
         $file = pathinfo($migration, PATHINFO_FILENAME);
 
-        $this->line('<info>Created Seeder for ' . ucfirst($env) . ' environment:</info>' . " {$file}");
+        $this->line('<info>Created Seeder for '.ucfirst($env).' environment:</info>'." {$file}");
 
         return $file;
     }
@@ -93,9 +93,9 @@ class SeedMake extends MigrateMakeCommand
 
         $path = (empty($targetPath))
             ? database_path(config('seeders.dir'))
-            : $this->laravel->basePath() . DIRECTORY_SEPARATOR . $targetPath;
+            : $this->laravel->basePath().DIRECTORY_SEPARATOR.$targetPath;
 
-        return $path . DIRECTORY_SEPARATOR . $env;
+        return $path.DIRECTORY_SEPARATOR.$env;
     }
 
     /**

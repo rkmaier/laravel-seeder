@@ -2,10 +2,8 @@
 
 use Eighty8\LaravelSeeder\Migration\MigratableSeeder;
 use Eighty8\LaravelSeeder\Repository\DisableForeignKeysTrait;
-use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 
-class {{class}} extends Seeder implements MigratableSeeder
+class {{class}} extends MigratableSeeder
 {
     use DisableForeignKeysTrait;
 

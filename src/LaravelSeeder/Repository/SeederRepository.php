@@ -239,7 +239,11 @@ class SeederRepository implements SeederRepositoryInterface
      *
      * @return array
      */
-    public function getMigrationBatches() {
-        //   
+    public function getMigrationBatches()
+    {
+        return $this->table()
+                ->orderBy('batch', 'asc')
+                ->orderBy('migration', 'asc')
+                ->pluck('batch', 'migration')->all();
     }
 }

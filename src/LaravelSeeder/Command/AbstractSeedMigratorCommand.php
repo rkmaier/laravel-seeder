@@ -8,6 +8,9 @@ use Illuminate\Console\Command;
 
 abstract class AbstractSeedMigratorCommand extends Command
 {
+    /* Constant for all environments */
+    const ALL_ENVIRONMENTS = 'all';
+
     /** @var string */
     protected $environment;
 
@@ -114,8 +117,12 @@ abstract class AbstractSeedMigratorCommand extends Command
     {
         $pathFromConfig = database_path(config('seeders.dir'));
 
-        $pathWithEnv = $pathFromConfig.DIRECTORY_SEPARATOR.$this->getEnvironment();
+        // Add the 'all' environment path to migration paths
+        $allEnvPath = $pathFromConfig.DIRECTORY_SEPARATOR.self::ALL_ENVIRONMENTS;
+        $this->addMigrationPath($allEnvPath);
 
+        // Add the targeted environment path to migration paths
+        $pathWithEnv = $pathFromConfig.DIRECTORY_SEPARATOR.$this->getEnvironment();
         $this->addMigrationPath($pathWithEnv);
     }
 

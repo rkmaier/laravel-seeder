@@ -2,7 +2,6 @@
 
 namespace Eighty8\LaravelSeeder\Command;
 
-use App;
 use Eighty8\LaravelSeeder\Migration\SeederMigratorInterface;
 use Illuminate\Console\Command;
 
@@ -85,7 +84,9 @@ abstract class AbstractSeedMigratorCommand extends Command
      */
     protected function resolveEnvironment(): void
     {
-        $this->setEnvironment($this->input->getOption('env') ?: App::environment());
+        $env = $this->input->getOption('env') ?: $this->getLaravel()->environment();
+
+        $this->setEnvironment($env);
 
         $this->getMigrator()->setEnvironment($this->getEnvironment());
     }

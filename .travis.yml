@@ -1,15 +1,28 @@
-sudo: required
-
 language: php
 
-services:
-  - docker
+php:
+  - 7.1
+  - 7.2
 
-before_install:
-- docker-compose up -d --build
-- sleep 30s
-- docker-compose ps
-- docker-compose logs
+install:
+  # Install Composer dependencies
+  - travis_retry composer install --no-interaction --no-suggest
+
+  # Install Coveralls
+  - wget -c -nc --retry-connrefused --tries=0 https://github.com/php-coveralls/php-coveralls/releases/download/v2.0.0/php-coveralls.phar -O coveralls.phar
+  - chmod +x coveralls.phar
+  - php coveralls.phar --version
+
+before_script:
+  - mkdir -p coverage/logs
 
 script:
-- docker-compose exec laravel-seeder code-coverage.sh
+  - vendor/bin/phpunit --coverage-clover coverage/logs/clover.xml
+
+after_script:
+  - travis_retry php coveralls.phar -v
+
+cache:
+  directories:
+    - vendor
+    - $HOME/.cache/composer

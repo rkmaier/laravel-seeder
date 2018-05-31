@@ -8,8 +8,8 @@ Have you ever wanted to seed your database in the same way you define and manage
 Have you ever wanted to seed a production database with different data from what you use in development? What if you want to 
 seed a table you've added to a database that is currently in production with new data?
 
-LaravelSeeder takes the database migration features in Laravel and extends them to database seeders, making them "migratable". 
-All of the functionality you have grown accustomed to with Laravel migrations have been mirrored for database seeding!
+This project takes the database migration features in Laravel and extends them to database seeders, making them "migratable". 
+All of the functionality you have grown accustomed to with Laravel migrations have been mirrored for simple database seeding!
 
 Requirements
 ============

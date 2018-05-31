@@ -9,3 +9,6 @@
 composer.phar
 composer.lock
 vendor/
+
+# Debug
+coverage/

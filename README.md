@@ -47,19 +47,25 @@ When you install LaravelSeeder, various artisan commands are made available to y
 
 Local Development
 ============
-A Dockerfile with PHP 7.1 and Composer installed is bundled with the project to facilitate local development.
+A Dockerfile with PHP 7.2, XDebug and Composer installed is bundled with the project to facilitate local development.
 
-To build the image:
-```
-docker build -t laravel-seeder .
-```
+To easily bring up the local development environment, use the Docker Compose configuration:
 
-To install Composer dependencies:
 ```
-docker run -v "$PWD":/usr/local/src laravel-seeder composer install
+docker-compose up -d --build
 ```
 
-To run PHPUnit tests:
+By default, the entrypoint script will install the Composer dependencies for you.
+
+To run the test suite, execute the following:
+
 ```
-docker run -v "$PWD":/usr/local/src laravel-seeder vendor/bin/phpunit
+docker-compose exec laravel-seeder test.sh
 ```
+
+To run the code coverage suite, execute the following:
+```
+docker-compose exec laravel-seeder code-coverage.sh
+```
+
+Happy testing!

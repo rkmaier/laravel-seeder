@@ -1,6 +1,7 @@
 # LaravelSeeder
 
 [![Build Status](https://travis-ci.org/eighty8/laravel-seeder.svg?branch=master)](https://travis-ci.org/eighty8/laravel-seeder)
+[![Coverage Status](https://coveralls.io/repos/github/eighty8/laravel-seeder/badge.svg?branch=develop)](https://coveralls.io/github/eighty8/laravel-seeder?branch=master)
 
 Seeding as it is currently done in Laravel is intended only for dev builds, but what if you're iteratively creating your 
 database and want to constantly flush it and repopulate it during development? 
@@ -70,4 +71,4 @@ To run the code coverage suite, execute the following:
 docker-compose exec laravel-seeder code-coverage.sh
 ```
 
-Happy testing!
+Happy coding!

@@ -20,7 +20,7 @@ script:
   - vendor/bin/phpunit --coverage-clover coverage/logs/clover.xml
 
 after_script:
-  - travis_retry php coveralls.phar -v --coverage-clover coverage/logs/clover.xml
+  - travis_retry php coveralls.phar -v --coverage_clover coverage/logs/clover.xml
 
 cache:
   directories:

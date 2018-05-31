@@ -14,13 +14,13 @@ install:
   - php coveralls.phar --version
 
 before_script:
-  - mkdir -p coverage/logs
+  - mkdir -p build/logs
 
 script:
-  - vendor/bin/phpunit --coverage-clover coverage/logs/clover.xml
+  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
-after_script:
-  - travis_retry php coveralls.phar -v --coverage_clover coverage/logs/clover.xml
+after_success:
+  - travis_retry php coveralls.phar -v
 
 cache:
   directories:

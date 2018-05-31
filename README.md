@@ -1,5 +1,7 @@
 # LaravelSeeder
 
+[![Build Status](https://travis-ci.org/eighty8/laravel-seeder.svg?branch=master)](https://travis-ci.org/eighty8/laravel-seeder)
+
 Seeding as it is currently done in Laravel is intended only for dev builds, but what if you're iteratively creating your 
 database and want to constantly flush it and repopulate it during development? 
 

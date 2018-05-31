@@ -22,15 +22,21 @@ Installation
 
 Install the package via Composer:
 
-```composer require eighty8/laravel-seeder```
+```
+composer require eighty8/laravel-seeder
+```
 
 Register the service provider:
 
-```Eighty8\LaravelSeeder\SeederServiceProvider::class```
+```
+Eighty8\LaravelSeeder\SeederServiceProvider::class
+```
 
 Publish the configuration files:
 
-```php artisan vendor:publish``` 
+```
+php artisan vendor:publish
+``` 
 
 Enjoy!
 

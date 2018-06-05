@@ -1,34 +1,53 @@
-# LaravelSeeder
+# Laravel Seeder
 
-Seeding as it is currently done in Laravel is intended only for dev builds, but what if you're iteratively creating your 
-database and want to constantly flush it and repopulate it during development? 
+[![Build Status](https://travis-ci.org/eighty8/laravel-seeder.svg?branch=master)](https://travis-ci.org/eighty8/laravel-seeder)
+[![Coverage Status](https://coveralls.io/repos/github/eighty8/laravel-seeder/badge.svg?branch=develop)](https://coveralls.io/github/eighty8/laravel-seeder?branch=master)
 
-What if you want to seed a production database with different data from what you use in development? What if you want to 
+Have you ever wanted to seed your database in the same way you define and manage database tables in Laravel? Have you ever been confused about where you should seed data for your databases?
+
+Have you ever wanted to seed a production database with different data from what you use in development? What if you want to 
 seed a table you've added to a database that is currently in production with new data?
 
-LaravelSeeder takes the database migration features in Laravel and extends them to database seeders, making them "migratable". 
-All of the functionality you have grown accustomed to with Laravel migrations have been mirrored and behave similarly for seeders.
+This project takes the database migration features in Laravel and extends them to database seeders, making them "migratable". 
+All of the functionality you have grown accustomed to with Laravel migrations have been mirrored for simple database seeding!
 
 Requirements
 ============
 
-- Laravel >= 5.4
+- Laravel >= 5.4 OR Lumen >= 5.6
 - PHP >= 7.1
 
 Installation
 ============
 
-- Run ```composer require eighty8/laravel-seeder```
-- Add ```Eighty8\LaravelSeeder\SeederServiceProvider::class``` to your providers array in ```app/config/app.php```
-- Run ```php artisan vendor:publish``` to push config files to your config folder if you want to override the name of the seeds folder or the name of the table where seeds are stored
+Install the package via Composer:
 
+```
+composer require eighty8/laravel-seeder
+```
+
+Register the service provider:
+
+```
+Eighty8\LaravelSeeder\SeederServiceProvider::class
+```
+
+Publish the configuration files:
+
+```
+php artisan vendor:publish
+``` 
+
+Enjoy!
 
 Features
 ============
 
-- Allows you to seed databases in different environments with different values.
-- Allows you to "version" seeds the same way that Laravel currently handles migrations. Running ```php artisan seed``` will only run seeds that haven't already been run.
-- Allows you to run multiple seeds of the same model/table
+- Allows you to seed databases in different or all environments with different values.
+- Allows you to "version" seeders the same way that Laravel handles database migrations. Running ```php artisan seed``` will only run seeds that haven't already been run.
+- Allows you to rollback seeders just like database migrations 
+- Allows you to run multiple seeders for the same model/table
+- Allows you generate new seeders via CLI
 - Prompts you if your database is in production
 
 Usage
@@ -36,13 +55,12 @@ Usage
 When you install LaravelSeeder, various artisan commands are made available to you which use the same methodology you're used to using with Migrations.
 
 <table>
-<tr><td>seed</td><td>Runs all the seeds in the "seeders" directory that haven't been run yet.</td></tr>
-<tr><td>seed:rollback</td><td>Rollback doesn't undo seeding (which would be impossible with an auto-incrementing primary key). It just allows you to re-run the last batch of seeds.</td></tr>
-<tr><td>seed:reset</td><td>Resets all the seeds.</td></tr>
-<tr><td>seed:refresh</td><td>Resets and re-runs all seeds.</td></tr>
-<tr><td>seed:status</td><td>Gets the status of each migratable seeder.</td></tr>
-<tr><td>seed:make</td><td>Makes a new seed class in the environment you specify.</td></tr>
-<tr><td>seed:install</td><td>You don't have to use this... it will be run automatically when you call "seed"</td></tr>
+    <tr><td>seed</td><td>Runs all the seeds in the "seeders" directory that haven't been run yet.</td></tr>
+    <tr><td>seed:rollback</td><td>Rolls back the previous batch of seeders (note that this does not affect auto-incrementing columns).</td></tr>
+    <tr><td>seed:reset</td><td>Rolls back all the seeders.</td></tr>
+    <tr><td>seed:refresh</td><td>Resets and re-runs all seeds.</td></tr>
+    <tr><td>seed:status</td><td>Gets the status of each migratable seeder.</td></tr>
+    <tr><td>seed:make</td><td>Generates a new Seeder class in the environment you specify.</td></tr>
 </table>
 
 Local Development
@@ -68,4 +86,4 @@ To run the code coverage suite, execute the following:
 docker-compose exec laravel-seeder code-coverage.sh
 ```
 
-Happy testing!
+Happy coding!

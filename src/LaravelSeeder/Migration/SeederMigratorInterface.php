@@ -75,13 +75,6 @@ interface SeederMigratorInterface
     public function resolve($file): MigratableSeeder;
 
     /**
-     * Get the notes for the last operation.
-     *
-     * @return array
-     */
-    public function getNotes();
-
-    /**
      * Set the default connection name.
      *
      * @param string $name

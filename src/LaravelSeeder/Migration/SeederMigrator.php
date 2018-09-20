@@ -39,13 +39,6 @@ class SeederMigrator extends Migrator implements SeederMigratorInterface
     protected $connection;
 
     /**
-     * The notes for the current operation.
-     *
-     * @var array
-     */
-    protected $notes = [];
-
-    /**
      * The paths to all of the migration files.
      *
      * @var array

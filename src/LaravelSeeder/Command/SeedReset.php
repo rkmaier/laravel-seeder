@@ -39,13 +39,6 @@ class SeedReset extends AbstractSeedMigratorCommand
         $this->info('Removing seeded data for '.ucfirst($this->getEnvironment()).' environment...');
         $this->migrator->reset($this->getMigrationPaths(), $this->getMigrationOptions());
 
-        // Once the migrator has run we will grab the note output and send it out to
-        // the console screen, since the migrator itself functions without having
-        // any instances of the OutputInterface contract passed into the class.
-        foreach ($this->migrator->getNotes() as $note) {
-            $this->output->writeln($note);
-        }
-
         $this->info('Removed seeded data for '.ucfirst($this->getEnvironment()).' environment');
     }
 

@@ -39,13 +39,6 @@ class SeedRun extends AbstractSeedMigratorCommand
         $this->info('Seeding data for '.ucfirst($this->getEnvironment()).' environment...');
         $this->migrator->run($this->getMigrationPaths(), $this->getMigrationOptions());
 
-        // Once the migrator has run we will grab the note output and send it out to
-        // the console screen, since the migrator itself functions without having
-        // any instances of the OutputInterface contract passed into the class.
-        foreach ($this->migrator->getNotes() as $note) {
-            $this->output->writeln($note);
-        }
-
         $this->info('Seeded data for '.ucfirst($this->getEnvironment()).' environment');
     }
 

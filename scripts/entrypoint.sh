@@ -2,6 +2,6 @@
 
 set -e
 
-composer install
+php -d memory_limit=-1 /usr/local/bin/composer install
 
 exec "$@"

@@ -24,7 +24,7 @@ class SeederMigrationCreator extends MigrationCreator
      */
     public function create($name, $path, $table = null, $create = false)
     {
-        $this->ensureMigrationDoesntAlreadyExist($name);
+        $this->ensureMigrationDoesntAlreadyExist($name, $path);
         $this->ensurePathExists($path);
 
         // First we will get the stub file for the migration, which serves as a type
@@ -54,7 +54,7 @@ class SeederMigrationCreator extends MigrationCreator
      *
      * @return void
      */
-    protected function ensureMigrationDoesntAlreadyExist($name): void
+    protected function ensureMigrationDoesntAlreadyExist($name, $migrationPath = null): void
     {
         if (class_exists($className = $this->getClassName($name))) {
             throw new InvalidArgumentException("{$className} already exists.");
